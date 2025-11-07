@@ -268,18 +268,19 @@ def check_proximity_and_notify():
 def main():
      while True:
         IST = pytz.timezone("Asia/Kolkata")
-        current_time = datetime.now(IST).time()
-        if current_time >= datetime.strptime("09:25", "%H:%M").time() and current_time <= datetime.strptime("09:45", "%H:%M").time():
+        current_time = datetime.datetime.now(IST).time()
+        if current_time >= datetime.datetime.strptime("09:25", "%H:%M").time() and current_time <= datetime.datetime.strptime("09:45", "%H:%M").time():
             print("Notifying Weekly Levels : ", current_time)
             # Run the initial level fetch once immediately
             fetch_levels()
             notify_weekly_levels()
 
-        elif current_time >= datetime.strptime("09:30", "%H:%M").time() and current_time <= datetime.strptime("15:15", "%H:%M").time():
+        if current_time >= datetime.datetime.strptime("09:30", "%H:%M").time() and current_time <= datetime.datetime.strptime("15:15", "%H:%M").time():
             print("Market is open in IST timezone : ", current_time)
             # Run the initial level fetch once immediately
             check_proximity_and_notify()
-            time.sleep(300)
+            time.sleep(30)
+            print("5 min wait complete...!",current_time)
             
         else:
             print("Market closed for the day. Exiting program.")
