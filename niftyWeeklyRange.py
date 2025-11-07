@@ -279,7 +279,7 @@ def main():
             print("Market is open in IST timezone : ", current_time)
             # Run the initial level fetch once immediately
             check_proximity_and_notify()
-            time.sleep(30)
+            time.sleep(300)
             print("5 min wait complete...!",current_time)
             
         else:
